@@ -1,0 +1,357 @@
+/* style.css */
+
+/* --- VARIABEL WARNA BSI DAY --- */
+:root {
+    --bsi-green-dark: #004d40; 
+    --bsi-teal: #00897b; 
+    --bsi-teal-light: #4db6ac; 
+    --bsi-gold: #ffc107; 
+    --bsi-white: #ffffff;
+    --bsi-light-gray: #f5f5f5;
+    --bsi-mid-gray: #757575;
+    --bsi-dark-blue: #1A237E; /* Biru Indigo Gelap/Biru Tua */
+    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* --- GENERAL & CONTAINER (Fokus pada Tinggi Penuh Layar) --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('../img/background.png') no-repeat center center fixed; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    color: var(--bsi-dark-blue);
+    margin: 0;
+    padding: 0; /* Hapus padding luar */
+    min-height: 100vh; /* Pastikan tinggi body penuh */
+    display: flex;
+    align-items: center; /* Posisikan container di tengah vertikal */
+    justify-content: center;
+}
+
+.container {
+    max-width: 950px;
+    width: 100%;
+    margin: 20px auto;
+    background: var(--bsi-white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+/* --- TYPOGRAPHY --- */
+.main-title {
+    color: var(--bsi-green-dark); 
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.main-title .icon-left, .main-title .icon-right {
+    color: var(--bsi-gold);
+    font-size: 0.8em;
+}
+
+.section-title {
+    color: var(--bsi-teal);
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--bsi-light-gray);
+    padding-bottom: 10px;
+}
+
+.sub-section-title {
+    color: var(--bsi-green-dark);
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.instruction {
+    font-style: italic;
+    color: var(--bsi-mid-gray); 
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 0.95em;
+}
+
+/* --- GAME INFO BAR --- */
+#game-info {
+    margin-bottom: 30px;
+    background-color: var(--bsi-light-gray);
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#game-info p {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--bsi-dark-blue); 
+}
+
+#game-info .info-value {
+    color: var(--bsi-green-dark);
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+/* --- DIVIDER --- */
+.divider {
+    margin: 30px 0;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--bsi-teal), rgba(0, 0, 0, 0));
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- GAME SECTIONS --- */
+.game-section {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid var(--bsi-light-gray);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    background-color: var(--bsi-white);
+    box-shadow: var(--shadow-light);
+}
+
+/* --- CARD AREAS --- */
+.card-area {
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    min-height: 160px; 
+    padding: 15px 0;
+    flex-wrap: wrap; 
+    align-items: center; 
+}
+
+#target-slots, #source-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); 
+    grid-gap: 15px;
+    min-height: 160px; 
+    border: 2px dashed var(--bsi-light-gray);
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--bsi-light-gray);
+}
+
+/* --- CARD BASE STYLE --- */
+.card {
+    width: 90px;  /* Lebar standar kartu */
+    height: 130px; /* Tinggi standar kartu */
+    background-color: transparent; /* Sekarang background kartu adalah gambar */
+    border: none; /* Hapus border standar */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-out;
+    cursor: grab;
+    position: relative; /* Untuk nomor urut */
+    overflow: hidden; /* Pastikan gambar kartu tidak keluar dari batas */
+}
+
+.card.selected-for-click {
+    border: 3px solid var(--bsi-gold); 
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); 
+    transform: translateY(-5px) scale(1.05); 
+    z-index: 50; 
+}
+
+/* Gaya untuk gambar di dalam kartu */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar mengisi kartu tanpa terdistorsi */
+    border-radius: 8px; /* Sudut gambar sesuai dengan kartu */
+}
+
+/* Hapus gaya teks untuk simbol dan nama karena sekarang pakai gambar */
+.card span:first-child, .card span:last-child { 
+    display: none; 
+}
+
+/* Gaya untuk nomor urut di fase mengingat */
+.card .index-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Latar belakang semi-transparan */
+    color: var(--bsi-green-dark);
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10; /* Pastikan nomor urut di atas gambar kartu */
+}
+
+
+/* Slot Kosong (Target) */
+.slot {
+    width: 90px;
+    height: 130px;
+    border: 2px dashed var(--bsi-mid-gray);
+    background-color: var(--bsi-white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+/* --- DRAG AND DROP STYLES --- */
+.card.dragging {
+    opacity: 0.5; 
+    border: 2px dashed var(--bsi-teal); /* Border saat di-drag */
+    box-shadow: none;
+    transform: scale(0.98);
+}
+
+.slot.slot-hover {
+    background-color: #e0eaf6; 
+    border-color: var(--bsi-teal); 
+    transform: scale(1.02); 
+    box-shadow: 0 0 10px rgba(0, 137, 123, 0.4);
+}
+
+/* --- BUTTONS --- */
+.btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn.primary-btn {
+    background-color: var(--bsi-green-dark);
+    color: var(--bsi-white);
+}
+
+.btn.primary-btn:hover:not(:disabled) {
+    background-color: var(--bsi-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn.secondary-btn {
+    background-color: var(--bsi-teal);
+    color: var(--bsi-white);
+}
+
+.btn.secondary-btn:hover:not(:disabled) {
+    background-color: var(--bsi-green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+/* --- MODAL --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); 
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 480px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+    animation: fadeIn 0.3s ease-out; 
+}
+
+.modal-title {
+    color: var(--bsi-green-dark);
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.modal-message {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--bsi-dark-blue);
+}
+
+.score-value {
+    font-size: 2em; 
+    font-weight: 700; 
+    color: var(--bsi-gold); 
+    margin-top: 10px;
+    display: block; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    .container {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .main-title {
+        font-size: 2em;
+    }
+    .card, .slot {
+        width: 75px;
+        height: 110px;
+    }
+    /* Hapus penyesuaian font-size untuk span di dalam card */
+    .card .index-number {
+        font-size: 0.7em;
+        padding: 2px 4px;
+    }
+    .modal-content {
+        width: 90%;
+    }
+}

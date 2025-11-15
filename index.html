@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSI Day: Uji Ingatan Urutan Kartu</title>
+    <link rel="stylesheet" href="assets/css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title"> BSI Day Memory Challenge</h1>
+        
+        <div id="game-info">
+            <p>Fase: <span id="game-phase" class="info-value">SIAP</span></p>
+            <p>Waktu: <span id="timer" class="info-value">00:00</span></p>
+        </div>
+        
+        <button id="start-button" class="btn primary-btn">Mulai Tantangan Baru</button>
+        
+        <hr class="divider">
+        
+        <div id="display-area" class="game-section">
+            <h2 class="section-title">1. Kartu Acuan (Mengingat)</h2>
+            <p id="memorize-instruction" class="instruction">Perhatikan urutan kartu ini dengan seksama selama waktu yang ditentukan.</p>
+            <div id="sequence-display" class="card-area">
+                </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div id="sort-area" class="game-section hidden">
+            <h2 class="section-title">2. Area Susunan (Menyusun Kembali)</h2>
+            <p class="instruction">Seret dan letakkan kartu dari Sumber ke Slot Target sesuai urutan yang Anda ingat.</p>
+
+            <h3 class="sub-section-title">Target Urutan (Susun di sini)</h3>
+            <div id="target-slots" class="card-area target-grid">
+                </div>
+
+            <h3 class="sub-section-title">Sumber Kartu (Seret untuk dipindah)</h3>
+            <div id="source-cards" class="card-area source-grid">
+                </div>
+
+            <button id="submit-button" class="btn secondary-btn" disabled>Selesai Menyusun</button>
+        </div>
+    </div>
+
+    <div id="finish-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Hasil Tantangan Anda!</h2>
+            <p id="result-message" class="modal-message"></p>
+            <p class="modal-detail">Waktu Menyusun: <span id="final-time"></span></p>
+            <p class="modal-detail">Skor Anda: <span id="final-score" class="score-value">0</span></p>
+            <button id="restart-modal-button" class="btn primary-btn">Main Lagi</button>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script> 
+</body>
+</html>
