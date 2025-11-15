@@ -64,7 +64,7 @@ const CARD_IMAGE_PATH_PREFIX = 'assets/img/cards/'; // Folder tempat gambar kart
 const CARD_IMAGE_EXTENSION = '.png'; // Ekstensi file gambar kartu Anda
 
 const MEMORIZE_TIME = 30; // Waktu Mengingat (detik)
-const RECALL_TIME = 20;  // Waktu Menyusun (detik)
+const RECALL_TIME = 50;  // Waktu Menyusun (detik)
 
 // 2. STATE PERMAINAN
 let correctSequence = [];     
@@ -92,6 +92,7 @@ const sourceCardsEl = document.getElementById('source-cards');
 const targetSlotsEl = document.getElementById('target-slots');
 const submitButton = document.getElementById('submit-button');
 const memorizeInstructionEl = document.getElementById('memorize-instruction');
+const backgroundMusic = document.getElementById('background-music'); // <-- BARU
 
 // Elemen modal
 const modal = document.getElementById('finish-modal');
@@ -99,6 +100,7 @@ const resultMessageEl = document.getElementById('result-message');
 const finalTimeEl = document.getElementById('final-time');
 const finalScoreEl = document.getElementById('final-score');
 const restartModalButton = document.getElementById('restart-modal-button');
+const startGameSound = document.getElementById('start-game-sound');
 
 
 // 4. FUNGSI UTILITAS
@@ -157,6 +159,10 @@ function createCardElement(cardData, indexInSequence = null, isDraggable = false
 function startMemorizingPhase() {
     gamePhase = 'MEMORIZING';
     gamePhaseEl.textContent = 'MENGINGAT';
+
+    startGameSound.play();
+
+    backgroundMusic.play();
     
     // Reset state
     finalScore = 0;
@@ -451,6 +457,11 @@ function endGame(isSuccess, correctCount, score) {
         resultMessageEl.innerHTML = `Anda berhasil menyusun ${correctCount} dari ${CARD_DATA.length} kartu dengan benar.`;
         resultMessageEl.style.color = 'red';
     }
+    
+    // --- BARU: Hentikan Backsound dan Reset Posisi ---
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0; 
+    // --- AKHIR BARU ---
 
     finalTimeEl.textContent = `${Math.floor(timeTakenToRecall / 60).toString().padStart(2, '0')}:${(timeTakenToRecall % 60).toString().padStart(2, '0')}`;
     finalScoreEl.textContent = score; 
@@ -469,9 +480,13 @@ function endGame(isSuccess, correctCount, score) {
 startButton.addEventListener('click', startMemorizingPhase);
 submitButton.addEventListener('click', checkResult);
 restartModalButton.addEventListener('click', () => {
+    // --- BARU: Hentikan Backsound (Jika belum berhenti) ---
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    // --- AKHIR BARU ---
     window.location.reload(); 
 });
-
+startButton.addEventListener('click', startMemorizingPhase);
 document.addEventListener('DOMContentLoaded', () => {
     gamePhaseEl.textContent = 'SIAP';
     timerEl.textContent = '00:00';
