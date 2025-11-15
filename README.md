@@ -61,7 +61,7 @@ Proyek ini adalah aplikasi web *front-end* murni, jadi Anda tidak memerlukan *se
 5.  **Main Lagi:**
     * Klik tombol **"Main Lagi"** di *modal* hasil untuk kembali ke halaman awal dan memulai tantangan baru.
 
-##  คะแนน (Penilaian Skor)
+##  Penilaian Skor
 
 Skor Anda dihitung berdasarkan:
 
