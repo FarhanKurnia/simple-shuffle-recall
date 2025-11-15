@@ -1,0 +1,13 @@
+# File Konfigurasi Editor (Contoh: VS Code)
+.vscode/
+
+# File Konfigurasi IDE/System
+.DS_Store
+Thumbs.db
+
+# Dependency (Jika di masa depan menggunakan Node.js/npm)
+# node_modules
+
+# Temporary Files
+*.log
+*.tmp
