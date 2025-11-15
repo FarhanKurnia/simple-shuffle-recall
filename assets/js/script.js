@@ -64,7 +64,7 @@ const CARD_IMAGE_PATH_PREFIX = 'assets/img/cards/'; // Folder tempat gambar kart
 const CARD_IMAGE_EXTENSION = '.png'; // Ekstensi file gambar kartu Anda
 
 const MEMORIZE_TIME = 30; // Waktu Mengingat (detik)
-const RECALL_TIME = 60;  // Waktu Menyusun (detik)
+const RECALL_TIME = 20;  // Waktu Menyusun (detik)
 
 // 2. STATE PERMAINAN
 let correctSequence = [];     

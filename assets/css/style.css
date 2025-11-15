@@ -47,11 +47,21 @@ body {
     color: var(--bsi-green-dark); 
     font-size: 2.8em;
     font-weight: 700;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin: 20px 0;
+}
+
+.main-title img {
+    /* Batasi lebar maksimum, misalnya 600px atau 80% dari container */
+    max-width: 600px; 
+    width: 80%; /* Pastikan gambar mengecil jika layar lebih kecil dari 600px */
+    height: auto; /* Memastikan rasio aspek tetap terjaga */
+    display: block; /* Agar properti margin auto (untuk centering) berfungsi */
+    margin: 0 auto; /* Tengah secara horizontal */
 }
 
 .main-title .icon-left, .main-title .icon-right {
