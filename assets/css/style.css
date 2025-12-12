@@ -164,6 +164,21 @@ body {
     background-color: var(--bsi-light-gray);
 }
 
+/* START: NEW STYLE FOR RULES LIST */
+.rule-list {
+    margin: 20px 0 20px 20px;
+    padding: 0;
+    list-style-type: decimal;
+    line-height: 1.8;
+    color: var(--bsi-dark-blue);
+    font-size: 1.05em;
+}
+
+.rule-list strong {
+    color: var(--bsi-green-dark);
+}
+/* END: NEW STYLE FOR RULES LIST */
+
 /* --- CARD BASE STYLE --- */
 .card {
     width: 90px;  /* Lebar standar kartu */
