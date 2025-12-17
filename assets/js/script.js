@@ -63,7 +63,7 @@ const CARD_BACK_IMAGE = 'assets/img/cards/card_back.png'; // Path ke gambar pung
 const CARD_IMAGE_PATH_PREFIX = 'assets/img/cards/'; // Folder tempat gambar kartu berada
 const CARD_IMAGE_EXTENSION = '.png'; // Ekstensi file gambar kartu Anda
 
-const MEMORIZE_TIME = 60; // Waktu Mengingat (detik)
+const MEMORIZE_TIME = 10; // Waktu Mengingat (detik)
 const RECALL_TIME = 90;  // Waktu Menyusun (detik)
 
 // 2. STATE PERMAINAN
@@ -433,13 +433,13 @@ function checkResult() {
     }
     
     finalScore = 0;
-    finalScore += correctCardsCount * 100; 
+    finalScore += correctCardsCount * 10; 
     
-    if (correctCardsCount === CARD_DATA.length) { 
-        const timeLeftBonus = timeRemaining * 10; 
-        finalScore += timeLeftBonus;
-        finalScore += 500; 
-    }
+    // if (correctCardsCount === CARD_DATA.length) { 
+    //     const timeLeftBonus = timeRemaining * 10; 
+    //     finalScore += timeLeftBonus;
+    //     finalScore += 500; 
+    // }
 
     const isSuccess = (correctCardsCount === CARD_DATA.length);
     endGame(isSuccess, correctCardsCount, finalScore);
